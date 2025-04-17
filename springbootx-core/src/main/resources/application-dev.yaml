@@ -1,0 +1,71 @@
+logging:
+  file:
+    path: springbootx-core/logs
+  level:
+    root: INFO
+#    com.example.service: DEBUG
+
+# 应用服务 WEB 访问端口
+server:
+  port: 8080
+
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/sky_take_out?ServerTimeZone=UTC
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: root
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+#  redis:
+#    host: 192.168.44.10
+#    port: 6379
+#    password: root
+#    database: 0
+#    lettuce:
+#      pool:
+#        max-active: 20
+#        max-idle: 10
+#        min-idle: 5
+#        max-wait: 2000ms
+
+
+
+mybatis-plus:
+  type-aliases-package: com.it.entity
+  mapper-locations: classpath:/mapper/**.xml
+  configuration:
+    map-underscore-to-camel-case: true # 默认true
+    cache-enabled: true # 开启二级缓存 默认true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto  # 自增id 默认assign_id 雪花算法
+#      table-prefix: tb_ # 表前缀
+
+knife4j:
+  enable: true
+  openapi:
+    title: Springbootx接口文档
+    description: "`Springbootx`接口文档"
+    concat: zhangzhicai
+    version: v1.0
+    group:
+      test1:
+        group-name: 后台管理
+        api-rule: package
+        api-rule-resources:
+          - com.it.controller
+
+minio:
+  oss:
+    endPoint: http://43.139.127.249:9000
+    bucketName: springdemo
+    accessKey: nzCKJW5r3ucdi57Id3qc
+    secretKey: z3tGnHkaZz7g4XyvuyHEr8Rns3OHGiU6n0xVlw1j
+
+
+
